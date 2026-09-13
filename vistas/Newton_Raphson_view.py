@@ -13,11 +13,7 @@ from metodos.newton_raphson import newton_raphson
 
 
 class VentanaNewtonRaphson:
-
-    # =========================================================
-    # COLORES
-    # =========================================================
-
+    
     COLOR_FONDO = "#FFE4E1"
     COLOR_PANEL = "#FFD1DC"
     COLOR_PANEL_2 = "#FFF0F0"
@@ -34,17 +30,9 @@ class VentanaNewtonRaphson:
     COLOR_ENTRADA = "#FFF5F5"
     COLOR_ENTRADA_TEXTO = "#8B3A52"
 
-    # =========================================================
-    # CONFIGURACIÓN
-    # =========================================================
-
     TOLERANCIA = 0.001
 
     MAX_ITERACIONES = 100
-
-    # =========================================================
-    # CONSTRUCTOR
-    # =========================================================
 
     def __init__(self, root):
 
@@ -73,15 +61,7 @@ class VentanaNewtonRaphson:
 
         self.crear_interfaz()
 
-    # =========================================================
-    # INTERFAZ
-    # =========================================================
-
     def crear_interfaz(self):
-
-        # =====================================================
-        # TÍTULO
-        # =====================================================
 
         titulo = tk.Label(
             self.root,
@@ -110,10 +90,6 @@ class VentanaNewtonRaphson:
             pady=(0, 10)
         )
 
-        # =====================================================
-        # PANEL DE ENTRADA
-        # =====================================================
-
         panel_entrada = tk.Frame(
             self.root,
             bg=self.COLOR_PANEL,
@@ -126,10 +102,6 @@ class VentanaNewtonRaphson:
             padx=20,
             pady=(0, 8)
         )
-
-        # =====================================================
-        # FUNCIÓN
-        # =====================================================
 
         tk.Label(
             panel_entrada,
@@ -167,10 +139,6 @@ class VentanaNewtonRaphson:
             "x**3 - 3*x"
         )
 
-        # =====================================================
-        # X0
-        # =====================================================
-
         tk.Label(
             panel_entrada,
             text="x₀:",
@@ -205,10 +173,6 @@ class VentanaNewtonRaphson:
             0,
             "-2, 2"
         )
-
-        # =====================================================
-        # TIPO DE BÚSQUEDA
-        # =====================================================
 
         tk.Label(
             panel_entrada,
@@ -245,10 +209,6 @@ class VentanaNewtonRaphson:
         self.combo_tipo.set(
             "Ambos"
         )
-
-        # =====================================================
-        # BOTÓN
-        # =====================================================
 
         self.boton_calcular = tk.Button(
             panel_entrada,
@@ -289,10 +249,6 @@ class VentanaNewtonRaphson:
             )
         )
 
-        # =====================================================
-        # DERIVADAS
-        # =====================================================
-
         panel_derivadas = tk.Frame(
             self.root,
             bg=self.COLOR_PANEL,
@@ -305,10 +261,6 @@ class VentanaNewtonRaphson:
             padx=20,
             pady=(0, 8)
         )
-
-        # =====================================================
-        # PRIMERA DERIVADA
-        # =====================================================
 
         tk.Label(
             panel_derivadas,
@@ -340,10 +292,6 @@ class VentanaNewtonRaphson:
             sticky="w"
         )
 
-        # =====================================================
-        # SEGUNDA DERIVADA
-        # =====================================================
-
         tk.Label(
             panel_derivadas,
             text="f''(x):",
@@ -374,10 +322,6 @@ class VentanaNewtonRaphson:
             sticky="w"
         )
 
-        # =====================================================
-        # RESULTADO
-        # =====================================================
-
         self.label_resultado = tk.Label(
             self.root,
             text="Resultados: --",
@@ -390,10 +334,6 @@ class VentanaNewtonRaphson:
             pady=(2, 8)
         )
 
-        # =====================================================
-        # ZONA INFERIOR
-        # =====================================================
-
         panel_inferior = tk.Frame(
             self.root,
             bg=self.COLOR_FONDO
@@ -405,10 +345,6 @@ class VentanaNewtonRaphson:
             padx=20,
             pady=(0, 15)
         )
-
-        # =====================================================
-        # TABLA
-        # =====================================================
 
         panel_tabla = tk.Frame(
             panel_inferior,
@@ -518,10 +454,6 @@ class VentanaNewtonRaphson:
             fill="y"
         )
 
-        # =====================================================
-        # GRÁFICAS
-        # =====================================================
-
         panel_graficas = tk.Frame(
             panel_inferior,
             bg=self.COLOR_PANEL,
@@ -537,10 +469,6 @@ class VentanaNewtonRaphson:
         panel_graficas.pack_propagate(
             False
         )
-
-        # =====================================================
-        # GRÁFICA FUNCIÓN
-        # =====================================================
 
         tk.Label(
             panel_graficas,
@@ -585,10 +513,6 @@ class VentanaNewtonRaphson:
             expand=True
         )
 
-        # =====================================================
-        # GRÁFICA ERROR
-        # =====================================================
-
         tk.Label(
             panel_graficas,
             text="ERROR POR ITERACIÓN",
@@ -632,10 +556,6 @@ class VentanaNewtonRaphson:
             expand=True
         )
 
-    # =========================================================
-    # ESTILOS
-    # =========================================================
-
     def configurar_estilos(self):
 
         estilo = ttk.Style()
@@ -644,10 +564,6 @@ class VentanaNewtonRaphson:
             estilo.theme_use("clam")
         except tk.TclError:
             pass
-
-        # =====================================================
-        # COMBOBOX
-        # =====================================================
 
         estilo.configure(
             "TCombobox",
@@ -668,10 +584,6 @@ class VentanaNewtonRaphson:
                 ("readonly", self.COLOR_ENTRADA_TEXTO)
             ]
         )
-
-        # =====================================================
-        # TREEVIEW
-        # =====================================================
 
         estilo.configure(
             "Treeview",
@@ -708,10 +620,6 @@ class VentanaNewtonRaphson:
             ]
         )
 
-        # =====================================================
-        # SCROLLBAR
-        # =====================================================
-
         estilo.configure(
             "Vertical.TScrollbar",
             background=self.COLOR_BOTON,
@@ -726,10 +634,6 @@ class VentanaNewtonRaphson:
                 ("active", self.COLOR_HOVER)
             ]
         )
-
-    # =========================================================
-    # CREAR FUNCIÓN Y DERIVADAS
-    # =========================================================
 
     def crear_funciones(self, expresion):
 
@@ -783,22 +687,10 @@ class VentanaNewtonRaphson:
                 "La función no es válida.\n\n"
                 f"{error}"
             )
-
-        # =====================================================
-        # PRIMERA DERIVADA
-        # =====================================================
-
+            
         primera = sp.diff(funcion, x)
 
-        # =====================================================
-        # SEGUNDA DERIVADA
-        # =====================================================
-
         segunda = sp.diff(primera, x)
-
-        # =====================================================
-        # FUNCIONES NUMÉRICAS
-        # =====================================================
 
         f = sp.lambdify(x, funcion, "math")
 
@@ -814,10 +706,6 @@ class VentanaNewtonRaphson:
             fp,
             fpp
         )
-
-    # =========================================================
-    # OBTENER X0
-    # =========================================================
 
     def obtener_x0(self):
 
@@ -855,17 +743,9 @@ class VentanaNewtonRaphson:
                 "-2, 2"
             )
 
-    # =========================================================
-    # CALCULAR
-    # =========================================================
-
     def calcular(self):
 
         try:
-
-            # =================================================
-            # OBTENER DATOS
-            # =================================================
 
             expresion = (
                 self.entrada_funcion
@@ -886,10 +766,6 @@ class VentanaNewtonRaphson:
                     "Debe ingresar una función."
                 )
 
-            # =================================================
-            # CREAR FUNCIÓN Y DERIVADAS
-            # =================================================
-
             (
                 funcion_sympy,
                 primera_sympy,
@@ -899,10 +775,6 @@ class VentanaNewtonRaphson:
                 fpp
             ) = self.crear_funciones(expresion)
 
-            # =================================================
-            # MOSTRAR DERIVADAS
-            # =================================================
-
             self.label_primera.config(
                 text=str(sp.sstr(primera_sympy))
             )
@@ -911,17 +783,9 @@ class VentanaNewtonRaphson:
                 text=str(sp.sstr(segunda_sympy))
             )
 
-            # =================================================
-            # LIMPIAR RESULTADOS
-            # =================================================
-
             self.resultados = []
 
             errores = []
-
-            # =================================================
-            # EJECUTAR NEWTON DESDE CADA X0
-            # =================================================
 
             for x0 in x0_lista:
 
@@ -935,10 +799,6 @@ class VentanaNewtonRaphson:
                         self.TOLERANCIA,
                         self.MAX_ITERACIONES
                     )
-
-                    # -----------------------------------------
-                    # EVITAR RESULTADOS DUPLICADOS
-                    # -----------------------------------------
 
                     x_nuevo = resultado["x_critico"]
 
@@ -964,10 +824,6 @@ class VentanaNewtonRaphson:
                         f"x₀ = {x0}: {e}"
                     )
 
-            # =================================================
-            # VERIFICAR RESULTADOS
-            # =================================================
-
             if not self.resultados:
 
                 mensaje = (
@@ -987,10 +843,6 @@ class VentanaNewtonRaphson:
 
                 raise ValueError(mensaje)
 
-            # =================================================
-            # FILTRAR SEGÚN OPCIÓN
-            # =================================================
-
             if tipo_busqueda == "Ambos":
 
                 resultados_filtrados = list(self.resultados)
@@ -1001,10 +853,6 @@ class VentanaNewtonRaphson:
                     r for r in self.resultados
                     if r["tipo"] == tipo_busqueda
                 ]
-
-            # =================================================
-            # VERIFICAR FILTRO
-            # =================================================
 
             if not resultados_filtrados:
 
@@ -1029,29 +877,13 @@ class VentanaNewtonRaphson:
 
                 raise ValueError(mensaje)
 
-            # =================================================
-            # ORDENAR POR X
-            # =================================================
-
             resultados_filtrados.sort(
                 key=lambda r: r["x_critico"]
             )
 
-            # =================================================
-            # MOSTRAR RESULTADOS
-            # =================================================
-
             self.mostrar_resultados(resultados_filtrados)
 
-            # =================================================
-            # MOSTRAR TABLA
-            # =================================================
-
             self.mostrar_tabla(resultados_filtrados)
-
-            # =================================================
-            # GRÁFICAS
-            # =================================================
 
             self.graficar_funcion(f, resultados_filtrados)
 
@@ -1071,10 +903,6 @@ class VentanaNewtonRaphson:
                 "No se pudo procesar la función.\n\n"
                 f"{error}"
             )
-
-    # =========================================================
-    # MOSTRAR RESULTADOS
-    # =========================================================
 
     def mostrar_resultados(self, resultados):
 
@@ -1099,10 +927,6 @@ class VentanaNewtonRaphson:
             text=texto,
             fg=self.COLOR_EXITO
         )
-
-    # =========================================================
-    # MOSTRAR TABLA
-    # =========================================================
 
     def mostrar_tabla(self, resultados):
 
@@ -1148,19 +972,11 @@ class VentanaNewtonRaphson:
                     )
                 )
 
-    # =========================================================
-    # GRÁFICA FUNCIÓN
-    # =========================================================
-
     def graficar_funcion(self, f, resultados):
 
         self.ax_funcion.clear()
 
         self.ax_funcion.set_facecolor(self.COLOR_PANEL_2)
-
-        # =====================================================
-        # RANGO
-        # =====================================================
 
         xs = [r["x_critico"] for r in resultados]
 
@@ -1203,10 +1019,6 @@ class VentanaNewtonRaphson:
 
                 pass
 
-        # =====================================================
-        # FUNCIÓN
-        # =====================================================
-
         if valores_x:
 
             self.ax_funcion.plot(
@@ -1216,10 +1028,6 @@ class VentanaNewtonRaphson:
                 color=self.COLOR_BOTON,
                 label="f(x)"
             )
-
-        # =====================================================
-        # PUNTOS CRÍTICOS
-        # =====================================================
 
         for resultado in resultados:
 
@@ -1242,10 +1050,6 @@ class VentanaNewtonRaphson:
                     f"({x:.4f}, {y:.4f})"
                 )
             )
-
-        # =====================================================
-        # EJE X
-        # =====================================================
 
         self.ax_funcion.axhline(
             0,
@@ -1279,17 +1083,9 @@ class VentanaNewtonRaphson:
             color=self.COLOR_TEXTO_SECUNDARIO
         )
 
-        # =====================================================
-        # BORDES
-        # =====================================================
-
         for borde in self.ax_funcion.spines.values():
 
             borde.set_color(self.COLOR_TEXTO_SECUNDARIO)
-
-        # =====================================================
-        # LEYENDA
-        # =====================================================
 
         leyenda = self.ax_funcion.legend(fontsize=8)
 
@@ -1306,10 +1102,6 @@ class VentanaNewtonRaphson:
         self.figura_funcion.tight_layout()
 
         self.canvas_funcion.draw()
-
-    # =========================================================
-    # GRÁFICA ERROR
-    # =========================================================
 
     def graficar_error(self, resultados):
 
@@ -1369,17 +1161,9 @@ class VentanaNewtonRaphson:
             color=self.COLOR_TEXTO_SECUNDARIO
         )
 
-        # =====================================================
-        # BORDES
-        # =====================================================
-
         for borde in self.ax_error.spines.values():
 
             borde.set_color(self.COLOR_TEXTO_SECUNDARIO)
-
-        # =====================================================
-        # LEYENDA
-        # =====================================================
 
         if resultados:
 
