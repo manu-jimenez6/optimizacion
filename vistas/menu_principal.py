@@ -14,10 +14,6 @@ from vistas.Maxima_Inclinacion_view import VentanaMaximaInclinacion
 
 class MenuPrincipal:
 
-    # ==========================================================
-    # COLORES
-    # ==========================================================
-
     COLOR_FONDO = "#FFE4E1"
     COLOR_PANEL = "#FFD1DC"
     COLOR_PANEL_2 = "#FFF0F0"
@@ -34,10 +30,6 @@ class MenuPrincipal:
     COLOR_ENTRADA = "#FFF5F5"
     COLOR_ENTRADA_TEXTO = "#8B3A52"
 
-    # ==========================================================
-    # INICIALIZACIÓN
-    # ==========================================================
-
     def __init__(self, root):
 
         self.root = root
@@ -45,10 +37,6 @@ class MenuPrincipal:
         self.root.title("Métodos Numéricos")
         self.root.state("zoomed")
         self.root.configure(bg=self.COLOR_FONDO)
-
-        # ======================================================
-        # TÍTULO
-        # ======================================================
 
         titulo = tk.Label(
             root,
@@ -60,10 +48,6 @@ class MenuPrincipal:
 
         titulo.pack(pady=(40, 10))
 
-        # ======================================================
-        # SUBTÍTULO
-        # ======================================================
-
         subtitulo = tk.Label(
             root,
             text="Seleccione el método que desea utilizar",
@@ -73,10 +57,6 @@ class MenuPrincipal:
         )
 
         subtitulo.pack(pady=(0, 30))
-
-        # ======================================================
-        # PANEL CENTRAL
-        # ======================================================
 
         panel = tk.Frame(
             root,
@@ -88,10 +68,6 @@ class MenuPrincipal:
         )
 
         panel.pack(expand=True)
-
-        # ======================================================
-        # BOTONES
-        # ======================================================
 
         botones = [
 
@@ -136,10 +112,6 @@ class MenuPrincipal:
                 columna = 0
                 fila += 1
 
-        # ======================================================
-        # BOTÓN SALIR
-        # ======================================================
-
         btn_salir = tk.Button(
             root,
             text="Salir",
@@ -158,7 +130,6 @@ class MenuPrincipal:
 
         btn_salir.pack(pady=25)
 
-        # Hover del botón salir
         btn_salir.bind(
             "<Enter>",
             lambda e: btn_salir.config(
@@ -172,10 +143,6 @@ class MenuPrincipal:
                 bg=self.COLOR_ERROR
             )
         )
-
-    # ==========================================================
-    # CREAR BOTÓN ESTILIZADO
-    # ==========================================================
 
     def crear_boton(self, contenedor, texto, comando):
 
@@ -195,10 +162,6 @@ class MenuPrincipal:
             command=comando
         )
 
-        # ------------------------------------------------------
-        # Hover
-        # ------------------------------------------------------
-
         boton.bind(
             "<Enter>",
             lambda e: boton.config(
@@ -214,10 +177,6 @@ class MenuPrincipal:
         )
 
         return boton
-
-    # ==========================================================
-    # VENTANAS
-    # ==========================================================
 
     def abrir_biseccion(self):
 
