@@ -15,10 +15,6 @@ from metodos.interpolacion_cuadratica import (
 
 class VentanaInterpolacionCuadratica:
 
-    # ==========================================================
-    # COLORES - ESTILO ROSA PASTEL
-    # ==========================================================
-
     COLOR_FONDO = "#FFE4E1"
     COLOR_PANEL = "#FFD1DC"
     COLOR_PANEL_2 = "#FFF0F0"
@@ -35,16 +31,8 @@ class VentanaInterpolacionCuadratica:
     COLOR_ENTRADA = "#FFF5F5"
     COLOR_ENTRADA_TEXTO = "#8B3A52"
 
-    # ==========================================================
-    # CONFIGURACIÓN
-    # ==========================================================
-
     TOLERANCIA = 0.001
     MAX_ITERACIONES = 100
-
-    # ==========================================================
-    # CONSTRUCTOR
-    # ==========================================================
 
     def __init__(self, root):
 
@@ -71,10 +59,6 @@ class VentanaInterpolacionCuadratica:
 
         self.crear_interfaz()
 
-    # ==========================================================
-    # ESTILOS
-    # ==========================================================
-
     def crear_estilos(self):
 
         estilo = ttk.Style()
@@ -88,10 +72,6 @@ class VentanaInterpolacionCuadratica:
         except tk.TclError:
 
             pass
-
-        # ------------------------------------------------------
-        # TABLA
-        # ------------------------------------------------------
 
         estilo.configure(
             "Treeview",
@@ -127,10 +107,6 @@ class VentanaInterpolacionCuadratica:
             ]
         )
 
-        # ------------------------------------------------------
-        # COMBOBOX
-        # ------------------------------------------------------
-
         estilo.configure(
             "TCombobox",
             fieldbackground=self.COLOR_ENTRADA,
@@ -141,15 +117,7 @@ class VentanaInterpolacionCuadratica:
             font=("Segoe UI", 10)
         )
 
-    # ==========================================================
-    # INTERFAZ
-    # ==========================================================
-
     def crear_interfaz(self):
-
-        # ======================================================
-        # TÍTULO
-        # ======================================================
 
         titulo = tk.Label(
             self.root,
@@ -178,10 +146,6 @@ class VentanaInterpolacionCuadratica:
             pady=(0, 10)
         )
 
-        # ======================================================
-        # PANEL DE ENTRADA
-        # ======================================================
-
         panel_entrada = tk.Frame(
             self.root,
             bg=self.COLOR_PANEL,
@@ -194,10 +158,6 @@ class VentanaInterpolacionCuadratica:
             padx=20,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -234,10 +194,6 @@ class VentanaInterpolacionCuadratica:
             "x**2 - 4*x + 5"
         )
 
-        # ======================================================
-        # X1
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="x₁:",
@@ -270,10 +226,6 @@ class VentanaInterpolacionCuadratica:
             0,
             "1"
         )
-
-        # ======================================================
-        # X2
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -308,10 +260,6 @@ class VentanaInterpolacionCuadratica:
             "2"
         )
 
-        # ======================================================
-        # X3
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="x₃:",
@@ -344,10 +292,6 @@ class VentanaInterpolacionCuadratica:
             0,
             "3"
         )
-
-        # ======================================================
-        # TIPO
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -384,10 +328,6 @@ class VentanaInterpolacionCuadratica:
             "Mínimo"
         )
 
-        # ======================================================
-        # TOLERANCIA
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="Tolerancia:",
@@ -421,10 +361,6 @@ class VentanaInterpolacionCuadratica:
             "0.001"
         )
 
-        # ======================================================
-        # ITERACIONES
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="Máx. iteraciones:",
@@ -457,10 +393,6 @@ class VentanaInterpolacionCuadratica:
             0,
             "100"
         )
-
-        # ======================================================
-        # BOTÓN CALCULAR
-        # ======================================================
 
         self.boton_calcular = tk.Button(
             panel_entrada,
@@ -500,10 +432,6 @@ class VentanaInterpolacionCuadratica:
             )
         )
 
-        # ======================================================
-        # RESULTADO
-        # ======================================================
-
         self.label_resultado = tk.Label(
             self.root,
             text="Resultado: --",
@@ -516,10 +444,6 @@ class VentanaInterpolacionCuadratica:
             pady=8
         )
 
-        # ======================================================
-        # ZONA INFERIOR
-        # ======================================================
-
         panel_inferior = tk.Frame(
             self.root,
             bg=self.COLOR_FONDO
@@ -531,10 +455,6 @@ class VentanaInterpolacionCuadratica:
             padx=20,
             pady=(0, 15)
         )
-
-        # ======================================================
-        # TABLA
-        # ======================================================
 
         panel_tabla = tk.Frame(
             panel_inferior,
@@ -569,10 +489,6 @@ class VentanaInterpolacionCuadratica:
             padx=8,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # COLUMNAS
-        # ======================================================
 
         columnas = (
             "i",
@@ -629,10 +545,6 @@ class VentanaInterpolacionCuadratica:
                 anchor="center"
             )
 
-        # ======================================================
-        # SCROLLBAR
-        # ======================================================
-
         scrollbar = ttk.Scrollbar(
             frame_tree,
             orient="vertical",
@@ -653,10 +565,6 @@ class VentanaInterpolacionCuadratica:
             side="right",
             fill="y"
         )
-
-        # ======================================================
-        # GRÁFICA
-        # ======================================================
 
         panel_grafica = tk.Frame(
             panel_inferior,
@@ -739,11 +647,7 @@ class VentanaInterpolacionCuadratica:
         self.figura.tight_layout()
 
         self.canvas.draw()
-
-    # ==========================================================
-    # CREAR FUNCIÓN
-    # ==========================================================
-
+        
     def crear_funcion(
         self,
         expresion
@@ -797,17 +701,9 @@ class VentanaInterpolacionCuadratica:
 
         return f
 
-    # ==========================================================
-    # CALCULAR
-    # ==========================================================
-
     def calcular(self):
 
         try:
-
-            # ==================================================
-            # DATOS
-            # ==================================================
 
             expresion = (
                 self.entrada_funcion
@@ -837,10 +733,6 @@ class VentanaInterpolacionCuadratica:
 
             tipo = self.combo_tipo.get()
 
-            # ==================================================
-            # VALIDACIONES
-            # ==================================================
-
             if not expresion:
 
                 raise ValueError(
@@ -869,10 +761,6 @@ class VentanaInterpolacionCuadratica:
                     "Los tres valores iniciales deben ser diferentes."
                 )
 
-            # ==================================================
-            # ORDENAR
-            # ==================================================
-
             if not (
                 x1 < x2 < x3
                 or x3 < x2 < x1
@@ -886,10 +774,6 @@ class VentanaInterpolacionCuadratica:
                 x2 = valores[1]
                 x3 = valores[2]
 
-            # ==================================================
-            # FUNCIÓN
-            # ==================================================
-
             f = self.crear_funcion(
                 expresion
             )
@@ -899,10 +783,6 @@ class VentanaInterpolacionCuadratica:
             f(x1)
             f(x2)
             f(x3)
-
-            # ==================================================
-            # EJECUTAR
-            # ==================================================
 
             resultado = interpolacion_cuadratica(
 
@@ -918,10 +798,6 @@ class VentanaInterpolacionCuadratica:
 
                 max_iter
             )
-
-            # ==================================================
-            # RESULTADOS
-            # ==================================================
 
             xr = resultado[
                 "x_optimo"
@@ -939,10 +815,6 @@ class VentanaInterpolacionCuadratica:
                 "error"
             ]
 
-            # ==================================================
-            # MOSTRAR RESULTADO
-            # ==================================================
-
             self.label_resultado.config(
                 text=(
                     f"{tipo}: "
@@ -953,17 +825,10 @@ class VentanaInterpolacionCuadratica:
                 )
             )
 
-            # ==================================================
-            # TABLA
-            # ==================================================
 
             self.mostrar_tabla(
                 resultado["tabla"]
             )
-
-            # ==================================================
-            # GRÁFICA
-            # ==================================================
 
             self.graficar(
                 f,
@@ -996,10 +861,6 @@ class VentanaInterpolacionCuadratica:
                 f"No se pudo procesar la función.\n\n"
                 f"{error}"
             )
-
-    # ==========================================================
-    # MOSTRAR TABLA
-    # ==========================================================
 
     def mostrar_tabla(
         self,
@@ -1041,10 +902,6 @@ class VentanaInterpolacionCuadratica:
                 )
             )
 
-    # ==========================================================
-    # GRÁFICA
-    # ==========================================================
-
     def graficar(
         self,
         f,
@@ -1061,10 +918,6 @@ class VentanaInterpolacionCuadratica:
         self.ax.set_facecolor(
             self.COLOR_PANEL_2
         )
-
-        # ======================================================
-        # RANGO
-        # ======================================================
 
         minimo = min(
             x1,
@@ -1092,11 +945,7 @@ class VentanaInterpolacionCuadratica:
         final = (
             maximo + distancia * 0.5
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
-
+        
         valores_x = []
         valores_y = []
 
@@ -1145,11 +994,7 @@ class VentanaInterpolacionCuadratica:
                 color="#D47A8D",
                 label="f(x)"
             )
-
-        # ======================================================
-        # PUNTOS INICIALES
-        # ======================================================
-
+            
         self.ax.scatter(
             [x1, x2, x3],
             [f(x1), f(x2), f(x3)],
@@ -1157,10 +1002,6 @@ class VentanaInterpolacionCuadratica:
             color="#E8A0B0",
             label="Puntos iniciales"
         )
-
-        # ======================================================
-        # ÓPTIMO
-        # ======================================================
 
         self.ax.scatter(
             [xr],
@@ -1174,19 +1015,11 @@ class VentanaInterpolacionCuadratica:
             )
         )
 
-        # ======================================================
-        # EJE X
-        # ======================================================
-
         self.ax.axhline(
             0,
             linewidth=1,
             color="#B34B6E"
         )
-
-        # ======================================================
-        # ETIQUETAS
-        # ======================================================
 
         self.ax.set_xlabel(
             "x",
@@ -1203,10 +1036,6 @@ class VentanaInterpolacionCuadratica:
             color=self.COLOR_TEXTO
         )
 
-        # ======================================================
-        # EJES
-        # ======================================================
-
         self.ax.tick_params(
             colors=self.COLOR_TEXTO_SECUNDARIO
         )
@@ -1217,18 +1046,10 @@ class VentanaInterpolacionCuadratica:
                 "#E8A0B0"
             )
 
-        # ======================================================
-        # CUADRÍCULA
-        # ======================================================
-
         self.ax.grid(
             True,
             alpha=0.3
         )
-
-        # ======================================================
-        # LEYENDA
-        # ======================================================
 
         leyenda = self.ax.legend(
             fontsize=8
@@ -1249,11 +1070,7 @@ class VentanaInterpolacionCuadratica:
                 texto.set_color(
                     self.COLOR_TEXTO_SECUNDARIO
                 )
-
-        # ======================================================
-        # ACTUALIZAR
-        # ======================================================
-
+                
         self.figura.tight_layout()
 
         self.canvas.draw()
