@@ -13,14 +13,14 @@ from metodos.biseccion import biseccion
 class VentanaBiseccion:
 
 
-    COLOR_FONDO = "#FFE4E1"          # Rosa pastel claro
-    COLOR_PANEL = "#FFD1DC"          # Rosa pastel
-    COLOR_PANEL_2 = "#FFF0F0"        # Rosa muy claro
+    COLOR_FONDO = "#FFE4E1"          
+    COLOR_PANEL = "#FFD1DC"         
+    COLOR_PANEL_2 = "#FFF0F0"        
 
-    COLOR_PRINCIPAL = "#B34B6E"      # Rosa oscuro
-    COLOR_BOTON = "#E88B9E"          # Rosa botón
-    COLOR_HOVER = "#D47A8D"          # Rosa hover
-    COLOR_OSCURO = "#8B3A52"         # Rosa oscuro para destacar
+    COLOR_PRINCIPAL = "#B34B6E"      
+    COLOR_BOTON = "#E88B9E"         
+    COLOR_HOVER = "#D47A8D"          
+    COLOR_OSCURO = "#8B3A52"         
 
     COLOR_TEXTO = "#B34B6E"
     COLOR_TEXTO_OSCURO = "#8B3A52"
@@ -31,17 +31,9 @@ class VentanaBiseccion:
     COLOR_BLANCO = "#FFFFFF"
     COLOR_BORDE = "#E8A0B0"
 
-    # =========================================================
-    # CONSTRUCTOR
-    # =========================================================
-
     def __init__(self, root):
 
         self.root = root
-
-        # -----------------------------------------------------
-        # CONFIGURACIÓN DE VENTANA
-        # -----------------------------------------------------
 
         self.root.title("Método de Bisección")
         self.root.geometry("1400x800")
@@ -50,15 +42,7 @@ class VentanaBiseccion:
             bg=self.COLOR_FONDO
         )
 
-        # -----------------------------------------------------
-        # CONFIGURAR ESTILOS
-        # -----------------------------------------------------
-
         self.configurar_estilos()
-
-        # -----------------------------------------------------
-        # VARIABLES
-        # -----------------------------------------------------
 
         self.entrada_funcion = None
         self.entrada_xl = None
@@ -79,15 +63,7 @@ class VentanaBiseccion:
         self.label_resultado = None
         self.estado_label = None
 
-        # -----------------------------------------------------
-        # CREAR INTERFAZ
-        # -----------------------------------------------------
-
         self.crear_interfaz()
-
-    # =========================================================
-    # ESTILOS
-    # =========================================================
 
     def configurar_estilos(self):
 
@@ -97,10 +73,6 @@ class VentanaBiseccion:
             estilo.theme_use("clam")
         except tk.TclError:
             pass
-
-        # -----------------------------------------------------
-        # TREEVIEW
-        # -----------------------------------------------------
 
         estilo.configure(
             "Rosa.Treeview",
@@ -130,10 +102,6 @@ class VentanaBiseccion:
             ]
         )
 
-        # -----------------------------------------------------
-        # SCROLLBARS
-        # -----------------------------------------------------
-
         estilo.configure(
             "Rosa.Vertical.TScrollbar",
             background=self.COLOR_BORDE,
@@ -149,10 +117,6 @@ class VentanaBiseccion:
             bordercolor=self.COLOR_FONDO,
             arrowcolor=self.COLOR_PRINCIPAL
         )
-
-    # =========================================================
-    # CREAR ENTRY
-    # =========================================================
 
     def crear_entry_redondeado(
         self,
@@ -176,15 +140,7 @@ class VentanaBiseccion:
 
         return entry
 
-    # =========================================================
-    # CREAR INTERFAZ
-    # =========================================================
-
     def crear_interfaz(self):
-
-        # =====================================================
-        # PANEL PRINCIPAL
-        # =====================================================
 
         panel_principal = tk.PanedWindow(
             self.root,
@@ -201,10 +157,6 @@ class VentanaBiseccion:
             pady=8
         )
 
-        # =====================================================
-        # PANEL IZQUIERDO
-        # =====================================================
-
         panel_izquierdo = tk.Frame(
             panel_principal,
             bg=self.COLOR_FONDO
@@ -215,10 +167,6 @@ class VentanaBiseccion:
             minsize=600
         )
 
-        # =====================================================
-        # PANEL DERECHO
-        # =====================================================
-
         panel_derecho = tk.Frame(
             panel_principal,
             bg=self.COLOR_FONDO
@@ -228,10 +176,6 @@ class VentanaBiseccion:
             panel_derecho,
             minsize=500
         )
-
-        # =====================================================
-        # TÍTULO
-        # =====================================================
 
         titulo = tk.Label(
             panel_izquierdo,
@@ -257,9 +201,6 @@ class VentanaBiseccion:
             pady=(0, 8)
         )
 
-        # =====================================================
-        # PANEL DE ENTRADA
-        # =====================================================
 
         frame_entrada = tk.LabelFrame(
             panel_izquierdo,
@@ -283,10 +224,6 @@ class VentanaBiseccion:
             1,
             weight=1
         )
-
-        # =====================================================
-        # FUNCIÓN
-        # =====================================================
 
         tk.Label(
             frame_entrada,
@@ -321,10 +258,6 @@ class VentanaBiseccion:
             "x**3 - x - 2"
         )
 
-        # =====================================================
-        # XL
-        # =====================================================
-
         tk.Label(
             frame_entrada,
             text="xl:",
@@ -356,10 +289,6 @@ class VentanaBiseccion:
             0,
             "1"
         )
-
-        # =====================================================
-        # XU
-        # =====================================================
 
         tk.Label(
             frame_entrada,
@@ -393,10 +322,6 @@ class VentanaBiseccion:
             "2"
         )
 
-        # =====================================================
-        # TOLERANCIA
-        # =====================================================
-
         tk.Label(
             frame_entrada,
             text="Tolerancia:",
@@ -428,10 +353,6 @@ class VentanaBiseccion:
             0,
             "0.001"
         )
-
-        # =====================================================
-        # ITERACIONES
-        # =====================================================
 
         tk.Label(
             frame_entrada,
@@ -465,10 +386,6 @@ class VentanaBiseccion:
             "100"
         )
 
-        # =====================================================
-        # BOTONES
-        # =====================================================
-
         frame_botones = tk.Frame(
             frame_entrada,
             bg=self.COLOR_PANEL
@@ -480,10 +397,6 @@ class VentanaBiseccion:
             columnspan=4,
             pady=(10, 3)
         )
-
-        # -----------------------------------------------------
-        # BOTÓN CALCULAR
-        # -----------------------------------------------------
 
         self.boton_calcular = tk.Button(
             frame_botones,
@@ -519,10 +432,6 @@ class VentanaBiseccion:
             )
         )
 
-        # -----------------------------------------------------
-        # BOTÓN LIMPIAR
-        # -----------------------------------------------------
-
         self.boton_limpiar = tk.Button(
             frame_botones,
             text="LIMPIAR",
@@ -557,10 +466,6 @@ class VentanaBiseccion:
             )
         )
 
-        # =====================================================
-        # RESULTADO
-        # =====================================================
-
         self.label_resultado = tk.Label(
             panel_izquierdo,
             text="Raíz: --     |     Iteraciones: --     |     Error: --",
@@ -572,10 +477,6 @@ class VentanaBiseccion:
         self.label_resultado.pack(
             pady=5
         )
-
-        # =====================================================
-        # TABLA
-        # =====================================================
 
         frame_tabla = tk.LabelFrame(
             panel_izquierdo,
@@ -596,10 +497,6 @@ class VentanaBiseccion:
             pady=5
         )
 
-        # =====================================================
-        # FRAME SCROLL
-        # =====================================================
-
         frame_tree = tk.Frame(
             frame_tabla,
             bg=self.COLOR_PANEL
@@ -609,10 +506,6 @@ class VentanaBiseccion:
             fill=tk.BOTH,
             expand=True
         )
-
-        # =====================================================
-        # COLUMNAS
-        # =====================================================
 
         columnas = (
             "i",
@@ -628,10 +521,6 @@ class VentanaBiseccion:
             "error3"
         )
 
-        # =====================================================
-        # SCROLLBARS
-        # =====================================================
-
         scrollbar_vertical = ttk.Scrollbar(
             frame_tree,
             orient=tk.VERTICAL,
@@ -643,11 +532,7 @@ class VentanaBiseccion:
             orient=tk.HORIZONTAL,
             style="Rosa.Horizontal.TScrollbar"
         )
-
-        # =====================================================
-        # TABLA
-        # =====================================================
-
+        
         self.tabla = ttk.Treeview(
             frame_tree,
             columns=columnas,
@@ -693,10 +578,6 @@ class VentanaBiseccion:
             weight=1
         )
 
-        # =====================================================
-        # ENCABEZADOS
-        # =====================================================
-
         nombres = {
             "i": "i",
             "xl": "xl",
@@ -740,10 +621,6 @@ class VentanaBiseccion:
                 stretch=False
             )
 
-        # =====================================================
-        # ESTADO
-        # =====================================================
-
         self.estado_label = tk.Label(
             panel_izquierdo,
             text="Listo",
@@ -755,14 +632,6 @@ class VentanaBiseccion:
         self.estado_label.pack(
             pady=3
         )
-
-        # =====================================================
-        # PANEL DERECHO
-        # =====================================================
-
-        # -----------------------------------------------------
-        # GRÁFICA FUNCIÓN
-        # -----------------------------------------------------
 
         frame_grafica_funcion = tk.LabelFrame(
             panel_derecho,
@@ -803,10 +672,6 @@ class VentanaBiseccion:
             expand=True
         )
 
-        # -----------------------------------------------------
-        # GRÁFICA ERROR
-        # -----------------------------------------------------
-
         frame_grafica_error = tk.LabelFrame(
             panel_derecho,
             text="Gráfica Error 1 (|xu - xr|)",
@@ -846,15 +711,7 @@ class VentanaBiseccion:
             expand=True
         )
 
-        # =====================================================
-        # GRÁFICAS INICIALES
-        # =====================================================
-
         self.configurar_grafica_vacia()
-
-    # =========================================================
-    # CREAR FUNCIÓN
-    # =========================================================
 
     def crear_funcion(self, expresion):
 
@@ -891,10 +748,6 @@ class VentanaBiseccion:
 
         return f
 
-    # =========================================================
-    # CALCULAR
-    # =========================================================
-
     def calcular(self):
 
         try:
@@ -904,10 +757,6 @@ class VentanaBiseccion:
             )
 
             self.root.update()
-
-            # -------------------------------------------------
-            # OBTENER DATOS
-            # -------------------------------------------------
 
             expresion = self.entrada_funcion.get().strip()
 
@@ -933,10 +782,6 @@ class VentanaBiseccion:
                 self.entrada_iteraciones.get()
             )
 
-            # -------------------------------------------------
-            # VALIDACIONES
-            # -------------------------------------------------
-
             if xl >= xu:
 
                 raise ValueError(
@@ -955,10 +800,6 @@ class VentanaBiseccion:
                     "El número de iteraciones debe ser mayor que 0."
                 )
 
-            # -------------------------------------------------
-            # CREAR FUNCIÓN
-            # -------------------------------------------------
-
             f = self.crear_funcion(
                 expresion
             )
@@ -966,10 +807,6 @@ class VentanaBiseccion:
             # Comprobar función
             f(xl)
             f(xu)
-
-            # -------------------------------------------------
-            # EJECUTAR BISECCIÓN
-            # -------------------------------------------------
 
             resultado = biseccion(
                 f,
@@ -979,17 +816,9 @@ class VentanaBiseccion:
                 max_iter
             )
 
-            # -------------------------------------------------
-            # RESULTADOS
-            # -------------------------------------------------
-
             raiz = resultado["raiz"]
             iteraciones = resultado["iteraciones"]
             error = resultado["error"]
-
-            # -------------------------------------------------
-            # MOSTRAR RESULTADO
-            # -------------------------------------------------
 
             self.label_resultado.config(
                 text=(
@@ -1000,17 +829,9 @@ class VentanaBiseccion:
                 fg=self.COLOR_OSCURO
             )
 
-            # -------------------------------------------------
-            # MOSTRAR TABLA
-            # -------------------------------------------------
-
             self.mostrar_tabla(
                 resultado["tabla"]
             )
-
-            # -------------------------------------------------
-            # GRÁFICA FUNCIÓN
-            # -------------------------------------------------
 
             self.graficar_funcion(
                 f,
@@ -1019,17 +840,9 @@ class VentanaBiseccion:
                 raiz
             )
 
-            # -------------------------------------------------
-            # GRÁFICA ERROR
-            # -------------------------------------------------
-
             self.graficar_error(
                 resultado["tabla"]
             )
-
-            # -------------------------------------------------
-            # ESTADO
-            # -------------------------------------------------
 
             self.estado_label.config(
                 text="Cálculo realizado correctamente."
@@ -1068,25 +881,13 @@ class VentanaBiseccion:
                 f"No se pudo procesar la función.\n\n{error}"
             )
 
-    # =========================================================
-    # MOSTRAR TABLA
-    # =========================================================
-
     def mostrar_tabla(self, datos):
-
-        # -----------------------------------------------------
-        # LIMPIAR TABLA
-        # -----------------------------------------------------
 
         for item in self.tabla.get_children():
 
             self.tabla.delete(
                 item
             )
-
-        # -----------------------------------------------------
-        # INSERTAR DATOS
-        # -----------------------------------------------------
 
         for fila in datos:
 
@@ -1108,10 +909,6 @@ class VentanaBiseccion:
                 )
             )
 
-    # =========================================================
-    # GRÁFICA DE FUNCIÓN
-    # =========================================================
-
     def graficar_funcion(
         self,
         f,
@@ -1122,10 +919,6 @@ class VentanaBiseccion:
 
         self.ax_funcion.clear()
 
-        # -----------------------------------------------------
-        # FONDO
-        # -----------------------------------------------------
-
         self.ax_funcion.set_facecolor(
             self.COLOR_ENTRADA
         )
@@ -1133,10 +926,6 @@ class VentanaBiseccion:
         self.figura_funcion.patch.set_facecolor(
             self.COLOR_PANEL
         )
-
-        # -----------------------------------------------------
-        # RANGO
-        # -----------------------------------------------------
 
         margen = (
             xu - xl
@@ -1157,10 +946,6 @@ class VentanaBiseccion:
         paso = (
             final - inicio
         ) / cantidad
-
-        # -----------------------------------------------------
-        # EVALUAR FUNCIÓN
-        # -----------------------------------------------------
 
         for i in range(
             cantidad + 1
@@ -1184,10 +969,6 @@ class VentanaBiseccion:
 
                 pass
 
-        # -----------------------------------------------------
-        # FUNCIÓN
-        # -----------------------------------------------------
-
         if valores_x:
 
             self.ax_funcion.plot(
@@ -1198,19 +979,11 @@ class VentanaBiseccion:
                 label="f(x)"
             )
 
-        # -----------------------------------------------------
-        # EJE X
-        # -----------------------------------------------------
-
         self.ax_funcion.axhline(
             0,
             linewidth=1,
             color=self.COLOR_PRINCIPAL
         )
-
-        # -----------------------------------------------------
-        # RAÍZ
-        # -----------------------------------------------------
 
         self.ax_funcion.scatter(
             [raiz],
@@ -1220,10 +993,6 @@ class VentanaBiseccion:
             color=self.COLOR_OSCURO,
             label=f"Raíz = {raiz:.6f}"
         )
-
-        # -----------------------------------------------------
-        # INTERVALO
-        # -----------------------------------------------------
 
         self.ax_funcion.axvline(
             xl,
@@ -1238,10 +1007,6 @@ class VentanaBiseccion:
             alpha=0.5,
             color=self.COLOR_BORDE
         )
-
-        # -----------------------------------------------------
-        # TEXTOS
-        # -----------------------------------------------------
 
         self.ax_funcion.set_xlabel(
             "x",
@@ -1258,10 +1023,6 @@ class VentanaBiseccion:
             color=self.COLOR_PRINCIPAL
         )
 
-        # -----------------------------------------------------
-        # EJES
-        # -----------------------------------------------------
-
         self.ax_funcion.tick_params(
             colors=self.COLOR_PRINCIPAL
         )
@@ -1272,10 +1033,6 @@ class VentanaBiseccion:
             color=self.COLOR_BORDE
         )
 
-        # -----------------------------------------------------
-        # LEYENDA
-        # -----------------------------------------------------
-
         if valores_x:
 
             self.ax_funcion.legend(
@@ -1283,10 +1040,6 @@ class VentanaBiseccion:
                 edgecolor=self.COLOR_BORDE,
                 labelcolor=self.COLOR_PRINCIPAL
             )
-
-        # -----------------------------------------------------
-        # BORDES
-        # -----------------------------------------------------
 
         for borde in self.ax_funcion.spines.values():
 
@@ -1300,20 +1053,12 @@ class VentanaBiseccion:
 
         self.canvas_funcion.draw()
 
-    # =========================================================
-    # GRÁFICA DEL ERROR
-    # =========================================================
-
     def graficar_error(
         self,
         datos
     ):
 
         self.ax_error.clear()
-
-        # -----------------------------------------------------
-        # FONDO
-        # -----------------------------------------------------
 
         self.ax_error.set_facecolor(
             self.COLOR_ENTRADA
@@ -1326,10 +1071,6 @@ class VentanaBiseccion:
         iteraciones = []
         errores = []
 
-        # -----------------------------------------------------
-        # OBTENER ERROR 1
-        # -----------------------------------------------------
-
         for fila in datos:
 
             iteraciones.append(
@@ -1339,10 +1080,6 @@ class VentanaBiseccion:
             errores.append(
                 fila["error1"]
             )
-
-        # -----------------------------------------------------
-        # DIBUJAR
-        # -----------------------------------------------------
 
         if len(iteraciones) > 0:
 
@@ -1354,10 +1091,6 @@ class VentanaBiseccion:
                 linewidth=1.5,
                 color=self.COLOR_BOTON
             )
-
-        # -----------------------------------------------------
-        # CONFIGURACIÓN
-        # -----------------------------------------------------
 
         self.ax_error.set_xlabel(
             "Iteración",
@@ -1384,10 +1117,6 @@ class VentanaBiseccion:
             color=self.COLOR_BORDE
         )
 
-        # -----------------------------------------------------
-        # BORDES
-        # -----------------------------------------------------
-
         for borde in self.ax_error.spines.values():
 
             borde.set_color(
@@ -1400,15 +1129,7 @@ class VentanaBiseccion:
 
         self.canvas_error.draw()
 
-    # =========================================================
-    # GRÁFICAS VACÍAS
-    # =========================================================
-
     def configurar_grafica_vacia(self):
-
-        # =====================================================
-        # FUNCIÓN
-        # =====================================================
 
         self.ax_funcion.set_facecolor(
             self.COLOR_ENTRADA
@@ -1455,10 +1176,6 @@ class VentanaBiseccion:
 
         self.canvas_funcion.draw()
 
-        # =====================================================
-        # ERROR
-        # =====================================================
-
         self.ax_error.set_facecolor(
             self.COLOR_ENTRADA
         )
@@ -1504,15 +1221,7 @@ class VentanaBiseccion:
 
         self.canvas_error.draw()
 
-    # =========================================================
-    # LIMPIAR
-    # =========================================================
-
     def limpiar(self):
-
-        # -----------------------------------------------------
-        # LIMPIAR ENTRADAS
-        # -----------------------------------------------------
 
         self.entrada_funcion.delete(
             0,
@@ -1539,19 +1248,11 @@ class VentanaBiseccion:
             tk.END
         )
 
-        # -----------------------------------------------------
-        # LIMPIAR TABLA
-        # -----------------------------------------------------
-
         for item in self.tabla.get_children():
 
             self.tabla.delete(
                 item
             )
-
-        # -----------------------------------------------------
-        # LIMPIAR RESULTADO
-        # -----------------------------------------------------
 
         self.label_resultado.config(
             text=(
@@ -1562,17 +1263,9 @@ class VentanaBiseccion:
             fg=self.COLOR_PRINCIPAL
         )
 
-        # -----------------------------------------------------
-        # LIMPIAR ESTADO
-        # -----------------------------------------------------
-
         self.estado_label.config(
             text="Listo"
         )
-
-        # -----------------------------------------------------
-        # LIMPIAR GRÁFICAS
-        # -----------------------------------------------------
 
         self.ax_funcion.clear()
         self.ax_error.clear()
