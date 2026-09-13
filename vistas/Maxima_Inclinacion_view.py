@@ -18,10 +18,6 @@ from metodos.maxima_inclinacion import (
 
 class VentanaMaximaInclinacion:
 
-    # ==========================================================
-    # COLORES
-    # ==========================================================
-
     COLOR_FONDO = "#FFE4E1"
     COLOR_PANEL = "#FFD1DC"
     COLOR_PANEL_2 = "#FFF0F0"
@@ -37,10 +33,6 @@ class VentanaMaximaInclinacion:
 
     COLOR_ENTRADA = "#FFF5F5"
     COLOR_ENTRADA_TEXTO = "#8B3A52"
-
-    # ==========================================================
-    # CONSTRUCTOR
-    # ==========================================================
 
     def __init__(self, root):
 
@@ -67,10 +59,6 @@ class VentanaMaximaInclinacion:
 
         self.crear_interfaz()
 
-    # ==========================================================
-    # ESTILOS
-    # ==========================================================
-
     def crear_estilos(self):
 
         estilo = ttk.Style()
@@ -84,10 +72,6 @@ class VentanaMaximaInclinacion:
         except tk.TclError:
 
             pass
-
-        # ======================================================
-        # COMBOBOX
-        # ======================================================
 
         estilo.configure(
             "TCombobox",
@@ -108,10 +92,6 @@ class VentanaMaximaInclinacion:
                 ("readonly", self.COLOR_ENTRADA_TEXTO)
             ]
         )
-
-        # ======================================================
-        # TREEVIEW
-        # ======================================================
 
         estilo.configure(
             "Treeview",
@@ -148,10 +128,6 @@ class VentanaMaximaInclinacion:
             ]
         )
 
-        # ======================================================
-        # SCROLLBAR
-        # ======================================================
-
         estilo.configure(
             "Vertical.TScrollbar",
             background=self.COLOR_BOTON,
@@ -167,15 +143,7 @@ class VentanaMaximaInclinacion:
             ]
         )
 
-    # ==========================================================
-    # INTERFAZ
-    # ==========================================================
-
     def crear_interfaz(self):
-
-        # ======================================================
-        # TÍTULO
-        # ======================================================
 
         titulo = tk.Label(
             self.root,
@@ -204,10 +172,6 @@ class VentanaMaximaInclinacion:
             pady=(0, 10)
         )
 
-        # ======================================================
-        # PANEL DE ENTRADA
-        # ======================================================
-
         panel_entrada = tk.Frame(
             self.root,
             bg=self.COLOR_PANEL,
@@ -220,10 +184,6 @@ class VentanaMaximaInclinacion:
             padx=20,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -260,10 +220,6 @@ class VentanaMaximaInclinacion:
             "3*x**2 - 120*x + y**2"
         )
 
-        # ======================================================
-        # X0
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="x₀:",
@@ -297,10 +253,6 @@ class VentanaMaximaInclinacion:
             "0"
         )
 
-        # ======================================================
-        # Y0
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="y₀:",
@@ -333,10 +285,6 @@ class VentanaMaximaInclinacion:
             0,
             "1"
         )
-
-        # ======================================================
-        # TOLERANCIA
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -374,10 +322,6 @@ class VentanaMaximaInclinacion:
             "0.001"
         )
 
-        # ======================================================
-        # ITERACIONES
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="Máx. iteraciones:",
@@ -411,10 +355,6 @@ class VentanaMaximaInclinacion:
             "100"
         )
 
-        # ======================================================
-        # BOTÓN
-        # ======================================================
-
         self.boton_calcular = tk.Button(
             panel_entrada,
             text="CALCULAR",
@@ -437,10 +377,6 @@ class VentanaMaximaInclinacion:
             padx=10
         )
 
-        # ======================================================
-        # HOVER DEL BOTÓN
-        # ======================================================
-
         self.boton_calcular.bind(
             "<Enter>",
             lambda e:
@@ -457,10 +393,6 @@ class VentanaMaximaInclinacion:
             )
         )
 
-        # ======================================================
-        # RESULTADO
-        # ======================================================
-
         self.label_resultado = tk.Label(
             self.root,
             text="Resultado: --",
@@ -473,10 +405,6 @@ class VentanaMaximaInclinacion:
             pady=8
         )
 
-        # ======================================================
-        # ZONA INFERIOR
-        # ======================================================
-
         panel_inferior = tk.Frame(
             self.root,
             bg=self.COLOR_FONDO
@@ -488,11 +416,7 @@ class VentanaMaximaInclinacion:
             padx=20,
             pady=(0, 15)
         )
-
-        # ======================================================
-        # TABLA
-        # ======================================================
-
+        
         panel_tabla = tk.Frame(
             panel_inferior,
             bg=self.COLOR_PANEL
@@ -526,10 +450,6 @@ class VentanaMaximaInclinacion:
             padx=8,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # COLUMNAS
-        # ======================================================
 
         columnas = (
             "i",
@@ -602,10 +522,6 @@ class VentanaMaximaInclinacion:
             fill="y"
         )
 
-        # ======================================================
-        # GRÁFICA 3D
-        # ======================================================
-
         panel_grafica = tk.Frame(
             panel_inferior,
             bg=self.COLOR_PANEL,
@@ -655,10 +571,6 @@ class VentanaMaximaInclinacion:
             pady=10
         )
 
-    # ==========================================================
-    # CREAR FUNCIÓN
-    # ==========================================================
-
     def crear_funcion(
         self,
         expresion
@@ -697,17 +609,9 @@ class VentanaMaximaInclinacion:
             expresion_sympy
         )
 
-    # ==========================================================
-    # CALCULAR
-    # ==========================================================
-
     def calcular(self):
 
         try:
-
-            # ==================================================
-            # DATOS
-            # ==================================================
 
             expresion = (
                 self.entrada_funcion
@@ -731,10 +635,6 @@ class VentanaMaximaInclinacion:
                 self.entrada_iteraciones.get()
             )
 
-            # ==================================================
-            # VALIDACIONES
-            # ==================================================
-
             if not expresion:
 
                 raise ValueError(
@@ -753,17 +653,9 @@ class VentanaMaximaInclinacion:
                     "El número de iteraciones debe ser mayor que 0."
                 )
 
-            # ==================================================
-            # CREAR FUNCIÓN
-            # ==================================================
-
             f, expresion_sympy = self.crear_funcion(
                 expresion
             )
-
-            # ==================================================
-            # VALIDAR FUNCIÓN EN EL PUNTO INICIAL
-            # ==================================================
 
             valor_inicial = f(
                 x0,
@@ -776,10 +668,6 @@ class VentanaMaximaInclinacion:
                     "La función no tiene un valor válido "
                     "en el punto inicial."
                 )
-
-            # ==================================================
-            # EJECUTAR MÉTODO
-            # ==================================================
 
             resultado = maxima_inclinacion(
 
@@ -794,10 +682,6 @@ class VentanaMaximaInclinacion:
                 max_iter
 
             )
-
-            # ==================================================
-            # RESULTADOS
-            # ==================================================
 
             xr = resultado[
                 "x_optimo"
@@ -819,10 +703,6 @@ class VentanaMaximaInclinacion:
                 "error"
             ]
 
-            # ==================================================
-            # MOSTRAR RESULTADO
-            # ==================================================
-
             self.label_resultado.config(
                 text=(
                     f"Máximo: "
@@ -835,17 +715,9 @@ class VentanaMaximaInclinacion:
                 fg=self.COLOR_EXITO
             )
 
-            # ==================================================
-            # TABLA
-            # ==================================================
-
             self.mostrar_tabla(
                 resultado["tabla"]
             )
-
-            # ==================================================
-            # GRÁFICA
-            # ==================================================
 
             self.graficar(
                 f,
@@ -879,28 +751,16 @@ class VentanaMaximaInclinacion:
                 )
             )
 
-    # ==========================================================
-    # MOSTRAR TABLA
-    # ==========================================================
-
     def mostrar_tabla(
         self,
         datos
     ):
-
-        # ======================================================
-        # LIMPIAR TABLA
-        # ======================================================
 
         for item in self.tabla.get_children():
 
             self.tabla.delete(
                 item
             )
-
-        # ======================================================
-        # INSERTAR DATOS
-        # ======================================================
 
         for fila in datos:
 
@@ -928,10 +788,6 @@ class VentanaMaximaInclinacion:
                 )
             )
 
-    # ==========================================================
-    # GRÁFICA 3D
-    # ==========================================================
-
     def graficar(
         self,
         f,
@@ -943,17 +799,9 @@ class VentanaMaximaInclinacion:
 
         self.ax.clear()
 
-        # ======================================================
-        # FONDO DE LA GRÁFICA
-        # ======================================================
-
         self.ax.set_facecolor(
             self.COLOR_PANEL_2
         )
-
-        # ======================================================
-        # OBTENER PUNTOS DE LA TRAYECTORIA
-        # ======================================================
 
         xs = np.array(
             [
@@ -975,10 +823,6 @@ class VentanaMaximaInclinacion:
                 for punto in trayectoria
             ]
         )
-
-        # ======================================================
-        # RANGO DE LA GRÁFICA
-        # ======================================================
 
         if len(xs) > 0:
 
@@ -1009,10 +853,6 @@ class VentanaMaximaInclinacion:
 
             ymin = yr - 5
             ymax = yr + 5
-
-        # ======================================================
-        # MALLA
-        # ======================================================
 
         cantidad = 40
 
@@ -1061,10 +901,6 @@ class VentanaMaximaInclinacion:
 
             pass
 
-        # ======================================================
-        # TRAYECTORIA
-        # ======================================================
-
         if len(xs) > 0:
 
             self.ax.plot(
@@ -1078,10 +914,6 @@ class VentanaMaximaInclinacion:
                 label="Trayectoria"
             )
 
-            # --------------------------------------------------
-            # PUNTO INICIAL
-            # --------------------------------------------------
-
             self.ax.scatter(
                 [xs[0]],
                 [ys[0]],
@@ -1090,10 +922,6 @@ class VentanaMaximaInclinacion:
                 color=self.COLOR_TEXTO_SECUNDARIO,
                 label="Punto inicial"
             )
-
-        # ======================================================
-        # PUNTO ÓPTIMO
-        # ======================================================
 
         self.ax.scatter(
             [xr],
@@ -1106,10 +934,6 @@ class VentanaMaximaInclinacion:
             linewidths=1,
             label="Máximo"
         )
-
-        # ======================================================
-        # ETIQUETAS
-        # ======================================================
 
         self.ax.set_xlabel(
             "x",
@@ -1132,17 +956,9 @@ class VentanaMaximaInclinacion:
             fontweight="bold"
         )
 
-        # ======================================================
-        # COLORES DE LOS EJES 3D
-        # ======================================================
-
         self.ax.tick_params(
             colors=self.COLOR_TEXTO_SECUNDARIO
         )
-
-        # ======================================================
-        # LEYENDA
-        # ======================================================
 
         leyenda = self.ax.legend(
             fontsize=8
