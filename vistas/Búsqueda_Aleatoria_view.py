@@ -15,10 +15,6 @@ from metodos.busqueda_aleatoria import (
 
 class VentanaBusquedaAleatoria:
 
-    # ==========================================================
-    # COLORES - ESTILO ROSA PASTEL
-    # ==========================================================
-
     COLOR_FONDO = "#FFE4E1"
     COLOR_PANEL = "#FFD1DC"
     COLOR_PANEL_2 = "#FFF0F0"
@@ -35,15 +31,7 @@ class VentanaBusquedaAleatoria:
     COLOR_ENTRADA = "#FFF5F5"
     COLOR_ENTRADA_TEXTO = "#8B3A52"
 
-    # ==========================================================
-    # CONFIGURACIÓN
-    # ==========================================================
-
     MAX_ITERACIONES = 10000
-
-    # ==========================================================
-    # CONSTRUCTOR
-    # ==========================================================
 
     def __init__(self, root):
 
@@ -70,10 +58,6 @@ class VentanaBusquedaAleatoria:
 
         self.crear_interfaz()
 
-    # ==========================================================
-    # ESTILOS
-    # ==========================================================
-
     def crear_estilos(self):
 
         estilo = ttk.Style()
@@ -87,10 +71,6 @@ class VentanaBusquedaAleatoria:
         except tk.TclError:
 
             pass
-
-        # ------------------------------------------------------
-        # TABLA
-        # ------------------------------------------------------
 
         estilo.configure(
             "Treeview",
@@ -126,15 +106,7 @@ class VentanaBusquedaAleatoria:
             ]
         )
 
-    # ==========================================================
-    # INTERFAZ
-    # ==========================================================
-
     def crear_interfaz(self):
-
-        # ======================================================
-        # TÍTULO
-        # ======================================================
 
         titulo = tk.Label(
             self.root,
@@ -163,10 +135,6 @@ class VentanaBusquedaAleatoria:
             pady=(0, 10)
         )
 
-        # ======================================================
-        # PANEL DE ENTRADA
-        # ======================================================
-
         panel_entrada = tk.Frame(
             self.root,
             bg=self.COLOR_PANEL,
@@ -179,10 +147,6 @@ class VentanaBusquedaAleatoria:
             padx=20,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -219,10 +183,6 @@ class VentanaBusquedaAleatoria:
             "y - x - 2*x**2 - 2*x*y - y**2"
         )
 
-        # ======================================================
-        # X INFERIOR
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="xₗ:",
@@ -256,10 +216,6 @@ class VentanaBusquedaAleatoria:
             "-2"
         )
 
-        # ======================================================
-        # X SUPERIOR
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="xᵤ:",
@@ -292,10 +248,6 @@ class VentanaBusquedaAleatoria:
             0,
             "2"
         )
-
-        # ======================================================
-        # Y INFERIOR
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -333,10 +285,6 @@ class VentanaBusquedaAleatoria:
             "1"
         )
 
-        # ======================================================
-        # Y SUPERIOR
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="yᵤ:",
@@ -369,10 +317,6 @@ class VentanaBusquedaAleatoria:
             0,
             "3"
         )
-
-        # ======================================================
-        # ITERACIONES
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -407,10 +351,6 @@ class VentanaBusquedaAleatoria:
             "10000"
         )
 
-        # ======================================================
-        # BOTÓN
-        # ======================================================
-
         self.boton_calcular = tk.Button(
             panel_entrada,
             text="CALCULAR",
@@ -433,10 +373,6 @@ class VentanaBusquedaAleatoria:
             padx=10
         )
 
-        # ------------------------------------------------------
-        # EFECTO HOVER
-        # ------------------------------------------------------
-
         self.boton_calcular.bind(
             "<Enter>",
             lambda e: self.boton_calcular.config(
@@ -451,10 +387,6 @@ class VentanaBusquedaAleatoria:
             )
         )
 
-        # ======================================================
-        # RESULTADO
-        # ======================================================
-
         self.label_resultado = tk.Label(
             self.root,
             text="Resultado: --",
@@ -467,10 +399,6 @@ class VentanaBusquedaAleatoria:
             pady=8
         )
 
-        # ======================================================
-        # ZONA INFERIOR
-        # ======================================================
-
         panel_inferior = tk.Frame(
             self.root,
             bg=self.COLOR_FONDO
@@ -482,11 +410,7 @@ class VentanaBusquedaAleatoria:
             padx=20,
             pady=(0, 15)
         )
-
-        # ======================================================
-        # TABLA
-        # ======================================================
-
+        
         panel_tabla = tk.Frame(
             panel_inferior,
             bg=self.COLOR_PANEL
@@ -520,10 +444,6 @@ class VentanaBusquedaAleatoria:
             padx=8,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # COLUMNAS
-        # ======================================================
 
         columnas = (
             "iteracion",
@@ -563,10 +483,6 @@ class VentanaBusquedaAleatoria:
                 anchor="center"
             )
 
-        # ======================================================
-        # SCROLLBAR
-        # ======================================================
-
         scrollbar = ttk.Scrollbar(
             frame_tree,
             orient="vertical",
@@ -587,10 +503,6 @@ class VentanaBusquedaAleatoria:
             side="right",
             fill="y"
         )
-
-        # ======================================================
-        # GRÁFICA
-        # ======================================================
 
         panel_grafica = tk.Frame(
             panel_inferior,
@@ -640,10 +552,6 @@ class VentanaBusquedaAleatoria:
             pady=10
         )
 
-        # ======================================================
-        # CONFIGURACIÓN INICIAL DE LA GRÁFICA
-        # ======================================================
-
         self.ax.set_facecolor(
             self.COLOR_PANEL_2
         )
@@ -681,10 +589,6 @@ class VentanaBusquedaAleatoria:
         self.figura.tight_layout()
 
         self.canvas.draw()
-
-    # ==========================================================
-    # CREAR FUNCIÓN
-    # ==========================================================
 
     def crear_funcion(
         self,
@@ -741,17 +645,9 @@ class VentanaBusquedaAleatoria:
 
         return f
 
-    # ==========================================================
-    # CALCULAR
-    # ==========================================================
-
     def calcular(self):
 
         try:
-
-            # ==================================================
-            # DATOS
-            # ==================================================
 
             expresion = (
                 self.entrada_funcion
@@ -779,10 +675,6 @@ class VentanaBusquedaAleatoria:
                 self.entrada_iteraciones.get()
             )
 
-            # ==================================================
-            # VALIDACIONES
-            # ==================================================
-
             if not expresion:
 
                 raise ValueError(
@@ -807,10 +699,6 @@ class VentanaBusquedaAleatoria:
                     "El número de iteraciones debe ser mayor que 0."
                 )
 
-            # ==================================================
-            # FUNCIÓN
-            # ==================================================
-
             f = self.crear_funcion(
                 expresion
             )
@@ -820,10 +708,6 @@ class VentanaBusquedaAleatoria:
             f(xl, yl)
 
             f(xu, yu)
-
-            # ==================================================
-            # EJECUTAR MÉTODO
-            # ==================================================
 
             resultado = busqueda_aleatoria(
 
@@ -841,10 +725,6 @@ class VentanaBusquedaAleatoria:
 
             )
 
-            # ==================================================
-            # RESULTADOS
-            # ==================================================
-
             x = resultado[
                 "x_optimo"
             ]
@@ -861,10 +741,6 @@ class VentanaBusquedaAleatoria:
                 "iteraciones"
             ]
 
-            # ==================================================
-            # MOSTRAR RESULTADO
-            # ==================================================
-
             self.label_resultado.config(
                 text=(
                     f"Máximo: "
@@ -875,17 +751,9 @@ class VentanaBusquedaAleatoria:
                 )
             )
 
-            # ==================================================
-            # TABLA
-            # ==================================================
-
             self.mostrar_tabla(
                 resultado["tabla"]
             )
-
-            # ==================================================
-            # GRÁFICA
-            # ==================================================
 
             self.graficar(
                 f,
@@ -912,10 +780,6 @@ class VentanaBusquedaAleatoria:
                 f"No se pudo procesar la función.\n\n"
                 f"{error}"
             )
-
-    # ==========================================================
-    # MOSTRAR TABLA
-    # ==========================================================
 
     def mostrar_tabla(
         self,
@@ -976,10 +840,6 @@ class VentanaBusquedaAleatoria:
                 )
             )
 
-    # ==========================================================
-    # GRÁFICA
-    # ==========================================================
-
     def graficar(
         self,
         f,
@@ -997,10 +857,6 @@ class VentanaBusquedaAleatoria:
         self.ax.set_facecolor(
             self.COLOR_PANEL_2
         )
-
-        # ======================================================
-        # CREAR MALLA
-        # ======================================================
 
         cantidad = 80
 
@@ -1054,10 +910,6 @@ class VentanaBusquedaAleatoria:
                 fila
             )
 
-        # ======================================================
-        # CONTORNOS
-        # ======================================================
-
         self.ax.contourf(
             valores_x,
             valores_y,
@@ -1074,11 +926,7 @@ class VentanaBusquedaAleatoria:
             colors="#B34B6E",
             linewidths=0.8
         )
-
-        # ======================================================
-        # MÁXIMO
-        # ======================================================
-
+        
         self.ax.scatter(
             [x_optimo],
             [y_optimo],
@@ -1091,10 +939,6 @@ class VentanaBusquedaAleatoria:
                 f"{y_optimo:.4f})"
             )
         )
-
-        # ======================================================
-        # CONFIGURACIÓN
-        # ======================================================
 
         self.ax.set_xlabel(
             "x",
@@ -1115,28 +959,16 @@ class VentanaBusquedaAleatoria:
             colors=self.COLOR_TEXTO_SECUNDARIO
         )
 
-        # ======================================================
-        # BORDES
-        # ======================================================
-
         for borde in self.ax.spines.values():
 
             borde.set_color(
                 "#E8A0B0"
             )
 
-        # ======================================================
-        # CUADRÍCULA
-        # ======================================================
-
         self.ax.grid(
             True,
             alpha=0.2
         )
-
-        # ======================================================
-        # LEYENDA
-        # ======================================================
 
         leyenda = self.ax.legend(
             fontsize=8
@@ -1157,10 +989,6 @@ class VentanaBusquedaAleatoria:
                 texto.set_color(
                     self.COLOR_TEXTO_SECUNDARIO
                 )
-
-        # ======================================================
-        # ACTUALIZAR
-        # ======================================================
 
         self.figura.tight_layout()
 
