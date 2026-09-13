@@ -12,18 +12,14 @@ from metodos.falsa_posicion import falsa_posicion
 
 class VentanaFalsaPosicion:
 
-    # =========================================================
-    # COLORES - MISMO ESTILO DE BISECCIÓN
-    # =========================================================
+    COLOR_FONDO = "#FFE4E1"          
+    COLOR_PANEL = "#FFD1DC"          
+    COLOR_PANEL_2 = "#FFF0F0"        
 
-    COLOR_FONDO = "#FFE4E1"          # Rosa pastel claro
-    COLOR_PANEL = "#FFD1DC"          # Rosa pastel
-    COLOR_PANEL_2 = "#FFF0F0"        # Rosa muy claro
+    COLOR_BOTON = "#E88B9E"          
+    COLOR_HOVER = "#D47A8D"          
 
-    COLOR_BOTON = "#E88B9E"          # Rosa botón
-    COLOR_HOVER = "#D47A8D"          # Rosa hover
-
-    COLOR_TEXTO = "#B34B6E"          # Rosa oscuro
+    COLOR_TEXTO = "#B34B6E"          
     COLOR_TEXTO_SECUNDARIO = "#8B5A68"
 
     COLOR_EXITO = "#B34B6E"
@@ -34,17 +30,9 @@ class VentanaFalsaPosicion:
 
     COLOR_BORDE = "#E8A0B0"
 
-    # =========================================================
-    # CONSTRUCTOR
-    # =========================================================
-
     def __init__(self, root):
 
         self.root = root
-
-        # =====================================================
-        # CONFIGURACIÓN
-        # =====================================================
 
         self.root.title(
             "Método de Falsa Posición"
@@ -63,15 +51,7 @@ class VentanaFalsaPosicion:
             bg=self.COLOR_FONDO
         )
 
-        # =====================================================
-        # ESTILOS
-        # =====================================================
-
         self.configurar_estilos()
-
-        # =====================================================
-        # TÍTULO
-        # =====================================================
 
         titulo = tk.Label(
             root,
@@ -97,10 +77,6 @@ class VentanaFalsaPosicion:
             pady=(0, 8)
         )
 
-        # =====================================================
-        # PANEL PRINCIPAL
-        # =====================================================
-
         panel_principal = tk.Frame(
             root,
             bg=self.COLOR_FONDO
@@ -113,10 +89,6 @@ class VentanaFalsaPosicion:
             pady=5
         )
 
-        # =====================================================
-        # PANEL IZQUIERDO
-        # =====================================================
-
         panel_izquierdo = tk.Frame(
             panel_principal,
             bg=self.COLOR_FONDO
@@ -128,11 +100,7 @@ class VentanaFalsaPosicion:
             expand=True,
             padx=(0, 5)
         )
-
-        # =====================================================
-        # PANEL DERECHO
-        # =====================================================
-
+        
         panel_derecho = tk.Frame(
             panel_principal,
             bg=self.COLOR_FONDO
@@ -144,10 +112,6 @@ class VentanaFalsaPosicion:
             expand=True,
             padx=(5, 0)
         )
-
-        # =====================================================
-        # PANEL DE ENTRADA
-        # =====================================================
 
         panel_entrada = tk.LabelFrame(
             panel_izquierdo,
@@ -171,10 +135,6 @@ class VentanaFalsaPosicion:
             1,
             weight=1
         )
-
-        # =====================================================
-        # FUNCIÓN
-        # =====================================================
 
         tk.Label(
             panel_entrada,
@@ -209,10 +169,6 @@ class VentanaFalsaPosicion:
             "x**3 - x - 2"
         )
 
-        # =====================================================
-        # XL
-        # =====================================================
-
         tk.Label(
             panel_entrada,
             text="xl:",
@@ -244,10 +200,6 @@ class VentanaFalsaPosicion:
             0,
             "1"
         )
-
-        # =====================================================
-        # XU
-        # =====================================================
 
         tk.Label(
             panel_entrada,
@@ -281,10 +233,6 @@ class VentanaFalsaPosicion:
             "2"
         )
 
-        # =====================================================
-        # TOLERANCIA
-        # =====================================================
-
         tk.Label(
             panel_entrada,
             text="Tolerancia:",
@@ -317,10 +265,6 @@ class VentanaFalsaPosicion:
             "0.001"
         )
 
-        # =====================================================
-        # MÁXIMO ITERACIONES
-        # =====================================================
-
         tk.Label(
             panel_entrada,
             text="Máx. iteraciones:",
@@ -352,10 +296,6 @@ class VentanaFalsaPosicion:
             0,
             "100"
         )
-
-        # =====================================================
-        # BOTONES
-        # =====================================================
 
         frame_botones = tk.Frame(
             panel_entrada,
@@ -409,10 +349,6 @@ class VentanaFalsaPosicion:
             padx=5
         )
 
-        # =====================================================
-        # HOVER BOTÓN CALCULAR
-        # =====================================================
-
         self.boton_calcular.bind(
             "<Enter>",
             lambda e: self.boton_calcular.config(
@@ -426,10 +362,6 @@ class VentanaFalsaPosicion:
                 bg=self.COLOR_BOTON
             )
         )
-
-        # =====================================================
-        # HOVER BOTÓN LIMPIAR
-        # =====================================================
 
         self.boton_limpiar.bind(
             "<Enter>",
@@ -445,10 +377,6 @@ class VentanaFalsaPosicion:
             )
         )
 
-        # =====================================================
-        # RESULTADO
-        # =====================================================
-
         self.label_resultado = tk.Label(
             panel_izquierdo,
             text="Raíz: --     |     Iteraciones: --     |     Error: --",
@@ -460,10 +388,6 @@ class VentanaFalsaPosicion:
         self.label_resultado.pack(
             pady=5
         )
-
-        # =====================================================
-        # TABLA
-        # =====================================================
 
         panel_tabla = tk.LabelFrame(
             panel_izquierdo,
@@ -484,10 +408,6 @@ class VentanaFalsaPosicion:
             pady=5
         )
 
-        # =====================================================
-        # FRAME TREEVIEW
-        # =====================================================
-
         frame_tree = tk.Frame(
             panel_tabla,
             bg=self.COLOR_PANEL
@@ -497,10 +417,6 @@ class VentanaFalsaPosicion:
             fill="both",
             expand=True
         )
-
-        # =====================================================
-        # COLUMNAS
-        # =====================================================
 
         columnas = (
             "i",
@@ -566,10 +482,6 @@ class VentanaFalsaPosicion:
                 stretch=False
             )
 
-        # =====================================================
-        # SCROLLBARS
-        # =====================================================
-
         scrollbar_vertical = ttk.Scrollbar(
             frame_tree,
             orient=tk.VERTICAL,
@@ -615,10 +527,6 @@ class VentanaFalsaPosicion:
             weight=1
         )
 
-        # =====================================================
-        # PANEL DERECHO - GRÁFICAS
-        # =====================================================
-
         panel_graficas = tk.Frame(
             panel_derecho,
             bg=self.COLOR_FONDO
@@ -630,10 +538,6 @@ class VentanaFalsaPosicion:
             padx=5,
             pady=5
         )
-
-        # =====================================================
-        # GRÁFICA DE FUNCIÓN
-        # =====================================================
 
         frame_funcion = tk.LabelFrame(
             panel_graficas,
@@ -673,10 +577,6 @@ class VentanaFalsaPosicion:
             expand=True
         )
 
-        # =====================================================
-        # GRÁFICA DEL ERROR
-        # =====================================================
-
         frame_error = tk.LabelFrame(
             panel_graficas,
             text="Gráfica del error",
@@ -715,15 +615,7 @@ class VentanaFalsaPosicion:
             expand=True
         )
 
-        # =====================================================
-        # GRÁFICAS INICIALES
-        # =====================================================
-
         self.configurar_grafica_vacia()
-
-    # =========================================================
-    # CREAR ENTRY
-    # =========================================================
 
     def crear_entry(
         self,
@@ -747,10 +639,6 @@ class VentanaFalsaPosicion:
 
         return entry
 
-    # =========================================================
-    # ESTILOS
-    # =========================================================
-
     def configurar_estilos(self):
 
         estilo = ttk.Style()
@@ -765,10 +653,6 @@ class VentanaFalsaPosicion:
 
             pass
 
-        # -----------------------------------------------------
-        # TREEVIEW
-        # -----------------------------------------------------
-
         estilo.configure(
             "Custom.Treeview",
             background="#FFF0F0",
@@ -779,10 +663,6 @@ class VentanaFalsaPosicion:
             font=("Arial", 9)
         )
 
-        # -----------------------------------------------------
-        # ENCABEZADOS
-        # -----------------------------------------------------
-
         estilo.configure(
             "Custom.Treeview.Heading",
             background="#E8A0B0",
@@ -790,10 +670,6 @@ class VentanaFalsaPosicion:
             font=("Arial", 9, "bold"),
             relief="flat"
         )
-
-        # -----------------------------------------------------
-        # SELECCIÓN
-        # -----------------------------------------------------
 
         estilo.map(
             "Custom.Treeview",
@@ -804,10 +680,6 @@ class VentanaFalsaPosicion:
                 ("selected", "white")
             ]
         )
-
-        # -----------------------------------------------------
-        # SCROLLBARS
-        # -----------------------------------------------------
 
         estilo.configure(
             "Vertical.TScrollbar",
@@ -824,11 +696,7 @@ class VentanaFalsaPosicion:
             bordercolor=self.COLOR_FONDO,
             arrowcolor="white"
         )
-
-    # =========================================================
-    # CREAR FUNCIÓN
-    # =========================================================
-
+        
     def crear_funcion(
         self,
         expresion
@@ -867,17 +735,9 @@ class VentanaFalsaPosicion:
 
         return f
 
-    # =========================================================
-    # CALCULAR
-    # =========================================================
-
     def calcular(self):
 
         try:
-
-            # -------------------------------------------------
-            # OBTENER DATOS
-            # -------------------------------------------------
 
             expresion = (
                 self.entrada_funcion
@@ -907,10 +767,6 @@ class VentanaFalsaPosicion:
                 self.entrada_iteraciones.get()
             )
 
-            # -------------------------------------------------
-            # VALIDACIONES
-            # -------------------------------------------------
-
             if xl >= xu:
 
                 raise ValueError(
@@ -929,10 +785,6 @@ class VentanaFalsaPosicion:
                     "El número de iteraciones debe ser mayor que 0."
                 )
 
-            # -------------------------------------------------
-            # CREAR FUNCIÓN
-            # -------------------------------------------------
-
             f = self.crear_funcion(
                 expresion
             )
@@ -941,10 +793,6 @@ class VentanaFalsaPosicion:
             f(xl)
             f(xu)
 
-            # -------------------------------------------------
-            # MÉTODO DE FALSA POSICIÓN
-            # -------------------------------------------------
-
             resultado = falsa_posicion(
                 f,
                 xl,
@@ -952,10 +800,6 @@ class VentanaFalsaPosicion:
                 tolerancia,
                 max_iter
             )
-
-            # -------------------------------------------------
-            # OBTENER RESULTADOS
-            # -------------------------------------------------
 
             raiz = resultado["raiz"]
 
@@ -967,10 +811,6 @@ class VentanaFalsaPosicion:
                 "error"
             ]
 
-            # -------------------------------------------------
-            # MOSTRAR RESULTADO
-            # -------------------------------------------------
-
             self.label_resultado.config(
                 text=(
                     f"Raíz: {raiz:.8f}"
@@ -980,17 +820,9 @@ class VentanaFalsaPosicion:
                 fg=self.COLOR_TEXTO
             )
 
-            # -------------------------------------------------
-            # MOSTRAR TABLA
-            # -------------------------------------------------
-
             self.mostrar_tabla(
                 resultado["tabla"]
             )
-
-            # -------------------------------------------------
-            # GRAFICAR FUNCIÓN
-            # -------------------------------------------------
 
             self.graficar_funcion(
                 f,
@@ -998,10 +830,6 @@ class VentanaFalsaPosicion:
                 xu,
                 raiz
             )
-
-            # -------------------------------------------------
-            # GRAFICAR ERROR
-            # -------------------------------------------------
 
             self.graficar_error(
                 resultado["tabla"]
@@ -1028,28 +856,16 @@ class VentanaFalsaPosicion:
                 f"No se pudo procesar la función.\n\n{error}"
             )
 
-    # =========================================================
-    # MOSTRAR TABLA
-    # =========================================================
-
     def mostrar_tabla(
         self,
         datos
     ):
-
-        # -----------------------------------------------------
-        # LIMPIAR TABLA
-        # -----------------------------------------------------
 
         for item in self.tabla.get_children():
 
             self.tabla.delete(
                 item
             )
-
-        # -----------------------------------------------------
-        # INSERTAR DATOS
-        # -----------------------------------------------------
 
         for fila in datos:
 
@@ -1091,10 +907,6 @@ class VentanaFalsaPosicion:
                 )
             )
 
-    # =========================================================
-    # FORMATEAR NÚMERO
-    # =========================================================
-
     def formatear_numero(
         self,
         valor
@@ -1116,10 +928,6 @@ class VentanaFalsaPosicion:
 
             return str(valor)
 
-    # =========================================================
-    # GRÁFICA DE FUNCIÓN
-    # =========================================================
-
     def graficar_funcion(
         self,
         f,
@@ -1133,10 +941,6 @@ class VentanaFalsaPosicion:
         self.ax_funcion.set_facecolor(
             self.COLOR_PANEL
         )
-
-        # -----------------------------------------------------
-        # RANGO
-        # -----------------------------------------------------
 
         margen = (
             xu - xl
@@ -1157,10 +961,6 @@ class VentanaFalsaPosicion:
         paso = (
             final - inicio
         ) / cantidad
-
-        # -----------------------------------------------------
-        # EVALUAR FUNCIÓN
-        # -----------------------------------------------------
 
         for i in range(
             cantidad + 1
@@ -1192,10 +992,6 @@ class VentanaFalsaPosicion:
 
                 pass
 
-        # -----------------------------------------------------
-        # DIBUJAR FUNCIÓN
-        # -----------------------------------------------------
-
         if valores_x:
 
             self.ax_funcion.plot(
@@ -1206,19 +1002,11 @@ class VentanaFalsaPosicion:
                 label="f(x)"
             )
 
-        # -----------------------------------------------------
-        # EJE X
-        # -----------------------------------------------------
-
         self.ax_funcion.axhline(
             0,
             color="#B34B6E",
             linewidth=1
         )
-
-        # -----------------------------------------------------
-        # RAÍZ
-        # -----------------------------------------------------
 
         self.ax_funcion.scatter(
             [raiz],
@@ -1228,10 +1016,6 @@ class VentanaFalsaPosicion:
             zorder=5,
             label=f"Raíz = {raiz:.6f}"
         )
-
-        # -----------------------------------------------------
-        # INTERVALO
-        # -----------------------------------------------------
 
         self.ax_funcion.axvline(
             xl,
@@ -1246,10 +1030,6 @@ class VentanaFalsaPosicion:
             linestyle="--",
             alpha=0.7
         )
-
-        # -----------------------------------------------------
-        # CONFIGURACIÓN
-        # -----------------------------------------------------
 
         self.ax_funcion.set_xlabel(
             "x",
@@ -1276,19 +1056,11 @@ class VentanaFalsaPosicion:
             alpha=0.2
         )
 
-        # -----------------------------------------------------
-        # BORDE DE LA GRÁFICA
-        # -----------------------------------------------------
-
         for spine in self.ax_funcion.spines.values():
 
             spine.set_color(
                 self.COLOR_BORDE
             )
-
-        # -----------------------------------------------------
-        # LEYENDA
-        # -----------------------------------------------------
 
         self.ax_funcion.legend(
             facecolor=self.COLOR_PANEL,
@@ -1301,10 +1073,6 @@ class VentanaFalsaPosicion:
         )
 
         self.canvas_funcion.draw()
-
-    # =========================================================
-    # GRÁFICA DEL ERROR
-    # =========================================================
 
     def graficar_error(
         self,
@@ -1320,10 +1088,6 @@ class VentanaFalsaPosicion:
         iteraciones = []
         errores = []
 
-        # -----------------------------------------------------
-        # OBTENER DATOS
-        # -----------------------------------------------------
-
         for fila in datos:
 
             iteraciones.append(
@@ -1334,9 +1098,6 @@ class VentanaFalsaPosicion:
                 fila["error3"]
             )
 
-        # -----------------------------------------------------
-        # GRAFICAR
-        # -----------------------------------------------------
 
         if len(iteraciones) > 0:
 
@@ -1348,10 +1109,6 @@ class VentanaFalsaPosicion:
                 markersize=3,
                 linewidth=1.5
             )
-
-        # -----------------------------------------------------
-        # CONFIGURACIÓN
-        # -----------------------------------------------------
 
         self.ax_error.set_xlabel(
             "Iteración",
@@ -1378,10 +1135,6 @@ class VentanaFalsaPosicion:
             alpha=0.2
         )
 
-        # -----------------------------------------------------
-        # BORDES
-        # -----------------------------------------------------
-
         for spine in self.ax_error.spines.values():
 
             spine.set_color(
@@ -1394,15 +1147,7 @@ class VentanaFalsaPosicion:
 
         self.canvas_error.draw()
 
-    # =========================================================
-    # GRÁFICAS VACÍAS
-    # =========================================================
-
     def configurar_grafica_vacia(self):
-
-        # =====================================================
-        # FUNCIÓN
-        # =====================================================
 
         self.ax_funcion.clear()
 
@@ -1447,10 +1192,6 @@ class VentanaFalsaPosicion:
 
         self.canvas_funcion.draw()
 
-        # =====================================================
-        # ERROR
-        # =====================================================
-
         self.ax_error.clear()
 
         self.ax_error.set_facecolor(
@@ -1494,15 +1235,7 @@ class VentanaFalsaPosicion:
 
         self.canvas_error.draw()
 
-    # =========================================================
-    # LIMPIAR
-    # =========================================================
-
     def limpiar(self):
-
-        # -----------------------------------------------------
-        # CAMPOS
-        # -----------------------------------------------------
 
         self.entrada_funcion.delete(
             0,
@@ -1529,27 +1262,15 @@ class VentanaFalsaPosicion:
             tk.END
         )
 
-        # -----------------------------------------------------
-        # TABLA
-        # -----------------------------------------------------
-
         for item in self.tabla.get_children():
 
             self.tabla.delete(
                 item
             )
 
-        # -----------------------------------------------------
-        # RESULTADO
-        # -----------------------------------------------------
-
         self.label_resultado.config(
             text="Raíz: --     |     Iteraciones: --     |     Error: --",
             fg=self.COLOR_TEXTO
         )
-
-        # -----------------------------------------------------
-        # GRÁFICAS
-        # -----------------------------------------------------
 
         self.configurar_grafica_vacia()
