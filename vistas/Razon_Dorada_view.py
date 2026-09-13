@@ -15,10 +15,6 @@ from metodos.razon_dorada import (
 
 class VentanaRazonDorada:
 
-    # ==========================================================
-    # COLORES
-    # ==========================================================
-
     COLOR_FONDO = "#FFE4E1"
     COLOR_PANEL = "#FFD1DC"
     COLOR_PANEL_2 = "#FFF0F0"
@@ -38,16 +34,8 @@ class VentanaRazonDorada:
     COLOR_GRAFICA = "#E88B9E"
     COLOR_LINEA_EJE = "#D47A8D"
 
-    # ==========================================================
-    # CONFIGURACIÓN
-    # ==========================================================
-
     TOLERANCIA = 0.01
     MAX_ITERACIONES = 100
-
-    # ==========================================================
-    # CONSTRUCTOR
-    # ==========================================================
 
     def __init__(self, root):
 
@@ -73,10 +61,6 @@ class VentanaRazonDorada:
         self.crear_estilos()
 
         self.crear_interfaz()
-
-    # ==========================================================
-    # ESTILOS
-    # ==========================================================
 
     def crear_estilos(self):
 
@@ -117,15 +101,8 @@ class VentanaRazonDorada:
             ]
         )
 
-    # ==========================================================
-    # INTERFAZ
-    # ==========================================================
 
     def crear_interfaz(self):
-
-        # ======================================================
-        # TÍTULO
-        # ======================================================
 
         titulo = tk.Label(
             self.root,
@@ -154,10 +131,6 @@ class VentanaRazonDorada:
             pady=(0, 10)
         )
 
-        # ======================================================
-        # PANEL DE ENTRADA
-        # ======================================================
-
         panel_entrada = tk.Frame(
             self.root,
             bg=self.COLOR_PANEL,
@@ -170,10 +143,6 @@ class VentanaRazonDorada:
             padx=20,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -209,10 +178,6 @@ class VentanaRazonDorada:
             "2*sin(x) - x**2/10"
         )
 
-        # ======================================================
-        # LÍMITE INFERIOR
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="xₗ:",
@@ -245,10 +210,6 @@ class VentanaRazonDorada:
             "0"
         )
 
-        # ======================================================
-        # LÍMITE SUPERIOR
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="xᵤ:",
@@ -280,10 +241,6 @@ class VentanaRazonDorada:
             0,
             "4"
         )
-
-        # ======================================================
-        # BUSCAR
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -320,11 +277,6 @@ class VentanaRazonDorada:
         self.combo_tipo.set(
             "Máximo"
         )
-
-        # ======================================================
-        # TOLERANCIA
-        # ======================================================
-
         tk.Label(
             panel_entrada,
             text="Tolerancia:",
@@ -356,10 +308,6 @@ class VentanaRazonDorada:
             0,
             "0.01"
         )
-
-        # ======================================================
-        # ITERACIONES
-        # ======================================================
 
         tk.Label(
             panel_entrada,
@@ -393,10 +341,6 @@ class VentanaRazonDorada:
             "100"
         )
 
-        # ======================================================
-        # BOTÓN
-        # ======================================================
-
         self.boton_calcular = tk.Button(
             panel_entrada,
             text="CALCULAR",
@@ -419,10 +363,6 @@ class VentanaRazonDorada:
             padx=10
         )
 
-        # ======================================================
-        # RESULTADO
-        # ======================================================
-
         self.label_resultado = tk.Label(
             self.root,
             text="Resultado: --",
@@ -435,10 +375,6 @@ class VentanaRazonDorada:
             pady=8
         )
 
-        # ======================================================
-        # ZONA INFERIOR
-        # ======================================================
-
         panel_inferior = tk.Frame(
             self.root,
             bg=self.COLOR_FONDO
@@ -450,10 +386,6 @@ class VentanaRazonDorada:
             padx=20,
             pady=(0, 15)
         )
-
-        # ======================================================
-        # TABLA
-        # ======================================================
 
         panel_tabla = tk.Frame(
             panel_inferior,
@@ -488,10 +420,6 @@ class VentanaRazonDorada:
             padx=8,
             pady=(0, 8)
         )
-
-        # ======================================================
-        # COLUMNAS
-        # ======================================================
 
         columnas = (
             "tipo",
@@ -572,10 +500,6 @@ class VentanaRazonDorada:
             fill="y"
         )
 
-        # ======================================================
-        # GRÁFICA
-        # ======================================================
-
         panel_grafica = tk.Frame(
             panel_inferior,
             bg=self.COLOR_PANEL,
@@ -623,10 +547,6 @@ class VentanaRazonDorada:
             padx=10,
             pady=10
         )
-
-    # ==========================================================
-    # CREAR FUNCIÓN
-    # ==========================================================
 
     def crear_funcion(
         self,
@@ -681,17 +601,9 @@ class VentanaRazonDorada:
 
         return f
 
-    # ==========================================================
-    # CALCULAR
-    # ==========================================================
-
     def calcular(self):
 
         try:
-
-            # ==================================================
-            # DATOS
-            # ==================================================
 
             expresion = (
                 self.entrada_funcion
@@ -716,10 +628,6 @@ class VentanaRazonDorada:
             )
 
             tipo = self.combo_tipo.get()
-
-            # ==================================================
-            # VALIDACIONES
-            # ==================================================
 
             if not expresion:
 
@@ -746,10 +654,6 @@ class VentanaRazonDorada:
                     "El número de iteraciones debe ser mayor que 0."
                 )
 
-            # ==================================================
-            # FUNCIÓN
-            # ==================================================
-
             f = self.crear_funcion(
                 expresion
             )
@@ -758,10 +662,6 @@ class VentanaRazonDorada:
 
             f(xl)
             f(xu)
-
-            # ==================================================
-            # EJECUTAR MÉTODO
-            # ==================================================
 
             resultado = razon_dorada(
 
@@ -778,10 +678,6 @@ class VentanaRazonDorada:
                 tipo
 
             )
-
-            # ==================================================
-            # MÁXIMO
-            # ==================================================
 
             if tipo == "Máximo":
 
@@ -818,10 +714,6 @@ class VentanaRazonDorada:
 
                 self.graficar(f, xl, xu, resultado, "Máximo")
 
-            # ==================================================
-            # MÍNIMO
-            # ==================================================
-
             elif tipo == "Mínimo":
 
                 xr = resultado[
@@ -856,10 +748,6 @@ class VentanaRazonDorada:
                 )
 
                 self.graficar(f, xl, xu, resultado, "Mínimo")
-
-            # ==================================================
-            # AMBOS
-            # ==================================================
 
             else:
 
@@ -922,10 +810,6 @@ class VentanaRazonDorada:
                 f"{error}"
             )
 
-    # ==========================================================
-    # MOSTRAR TABLA
-    # ==========================================================
-
     def mostrar_tabla(
         self,
         datos,
@@ -970,10 +854,6 @@ class VentanaRazonDorada:
                 )
             )
 
-    # ==========================================================
-    # MOSTRAR TABLA DE AMBOS
-    # ==========================================================
-
     def mostrar_tabla_ambos(
         self,
         tabla_maximo,
@@ -987,10 +867,6 @@ class VentanaRazonDorada:
             self.tabla.delete(
                 item
             )
-
-        # ======================================================
-        # MÁXIMO
-        # ======================================================
 
         for fila in tabla_maximo:
 
@@ -1020,10 +896,6 @@ class VentanaRazonDorada:
                 )
             )
 
-        # ======================================================
-        # MÍNIMO
-        # ======================================================
-
         for fila in tabla_minimo:
 
             self.tabla.insert(
@@ -1052,10 +924,6 @@ class VentanaRazonDorada:
                 )
             )
 
-    # ==========================================================
-    # GRÁFICA
-    # ==========================================================
-
     def graficar(self, f, xl, xu, resultado, tipo):
         self.ax.clear()
         self.ax.set_facecolor("#FFF5F5")
@@ -1067,10 +935,6 @@ class VentanaRazonDorada:
     
         self.ax.set_title(f"Razón dorada - {tipo}")
     
-
-        # ======================================================
-        # RANGO
-        # ======================================================
 
         distancia = max(
             xu - xl,
@@ -1084,10 +948,6 @@ class VentanaRazonDorada:
         final = (
             xu + distancia * 0.25
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
 
         valores_x = []
         valores_y = []
@@ -1138,10 +998,6 @@ class VentanaRazonDorada:
                 label="f(x)"
             )
 
-        # ======================================================
-        # LÍMITES
-        # ======================================================
-
         self.ax.scatter(
             [xl, xu],
             [f(xl), f(xu)],
@@ -1149,10 +1005,6 @@ class VentanaRazonDorada:
             color="#C85A7A",
             label="Límites"
         )
-
-        # ======================================================
-        # ÓPTIMO
-        # ======================================================
 
         self.ax.scatter(
             [xr],
@@ -1165,10 +1017,6 @@ class VentanaRazonDorada:
                 f"({xr:.5f}, {yr:.5f})"
             )
         )
-
-        # ======================================================
-        # EJE X
-        # ======================================================
 
         self.ax.axhline(
             0,
@@ -1201,10 +1049,6 @@ class VentanaRazonDorada:
 
         self.canvas.draw()
 
-    # ==========================================================
-    # GRÁFICA DE AMBOS
-    # ==========================================================
-
     def graficar_ambos(
         self,
         f,
@@ -1219,10 +1063,6 @@ class VentanaRazonDorada:
         self.ax.set_facecolor(
             "#F8FAFC"
         )
-
-        # ======================================================
-        # DATOS
-        # ======================================================
 
         xmax = resultado_maximo[
             "x_optimo"
@@ -1240,10 +1080,6 @@ class VentanaRazonDorada:
             "valor"
         ]
 
-        # ======================================================
-        # RANGO
-        # ======================================================
-
         distancia = max(
             xu - xl,
             2
@@ -1256,10 +1092,6 @@ class VentanaRazonDorada:
         final = (
             xu + distancia * 0.25
         )
-
-        # ======================================================
-        # FUNCIÓN
-        # ======================================================
 
         valores_x = []
         valores_y = []
@@ -1309,10 +1141,6 @@ class VentanaRazonDorada:
                 linewidth=2,
                 label="f(x)"
             )
-
-        # ======================================================
-        # LÍMITES
-        # ======================================================
 
         self.ax.scatter(
             [xl, xu],
@@ -1347,10 +1175,6 @@ class VentanaRazonDorada:
                 f"({xmin:.5f}, {ymin:.5f})"
             )
         )
-
-        # ======================================================
-        # EJE X
-        # ======================================================
 
         self.ax.axhline(
             0,
